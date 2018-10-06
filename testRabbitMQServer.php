@@ -10,7 +10,7 @@ function doLogin($username,$password)
     // lookup username in databas
     // check password
     $login = new loginDB();
-    return $login->validateLogin($username,$password);
+    return $login->validateLogin($_POST[$username],$password);
     //return false if not valid
 }
 

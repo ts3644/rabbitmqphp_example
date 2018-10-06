@@ -1,8 +1,11 @@
 <?php
-require('/home/talha/IT490/rabbitmqphp_example/testRabbitMQClient.php');
+#require('/home/talha/IT490/rabbitmqphp_example/testRabbitMQClient.php');
 
 $username = $_POST['username'];
 $password = $_POST['password'];
+$type = $_POST['type'];
+
+include('/home/talha/git/rabbitmqphp_example/testRabbitMQClient.php');
 
 if (!isset($_POST))
 {
@@ -10,9 +13,9 @@ if (!isset($_POST))
 	echo json_encode($msg);
 	exit(0);
 }
-$request = getData($username, $password); 
+$request = getData($username, $password); #$_POST; 
 	
-$response = "unsupported request type, politely FUCK OFF,  val orf resp= $request";
+$response = "unsupported request type, politely FUCK OFF ";
 switch ($request)
 {
 	case "1":
