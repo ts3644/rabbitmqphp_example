@@ -1,11 +1,12 @@
 <?php
 #require('/home/talha/IT490/rabbitmqphp_example/testRabbitMQClient.php');
+require('/home/talha/git/rabbitmqphp_example/testRabbitMQClient.php');
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-$type = $_POST['type'];
+#$type = $_POST['type'];
 
-include('/home/talha/git/rabbitmqphp_example/testRabbitMQClient.php');
+#include('/home/talha/git/rabbitmqphp_example/testRabbitMQClient.php');
 
 if (!isset($_POST))
 {

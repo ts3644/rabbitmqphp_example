@@ -1,0 +1,44 @@
+<html>
+<meta charset="utf-8"/>
+<script>
+function HandleSignupResponse(response){
+	var text = JSON.parse(response);
+	document.getElemenetByIT("textResponse").innerHTML = "response: "+text+"<p>";
+}
+function SendSignupRequest(username,password){
+	var request = new XMLHttpRequest();
+	request.open("POST","signup.php",true);
+	request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	request.onreadystatechange=function (){
+		if ((this.readyState == 4)&&(this.status == 200))
+		{
+			HandleSignupResponse(this.responseText);
+		}
+	}
+	request.send("type=signup&uname="+username+"&pword="+password);
+}
+</script>
+
+<h1>sign up</h1>
+
+<form action = "signup.php" method = POST>
+<input type=hidden name="type" value="signup">
+
+<body>
+
+<input type = "text" name = "username" id = "username" placeholder = "enter username">
+
+<input type = "text" name = "password" id = "password" placeholder = "enter password">
+
+<input type = "submit" class = "btn btn-info" value = "Sign Up">
+
+</form>
+
+<div id="textResponse">
+enter credentials
+</div>
+<script>>
+SendSignupRequest(document.getElementById("username").value, document.getElementById("password").value);
+</script>
+<body>
+</html>

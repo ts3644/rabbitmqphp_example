@@ -9,7 +9,7 @@ function HandleLoginResponse(response)
 	document.getElementById("textResponse").innerHTML = "response: "+text+"<p>";
 }
 
-function SendLoginRequest(username,password)
+function SendLoginRequest(username, password)
 {
 	var request = new XMLHttpRequest();
 	request.open("POST","login.php",true);
@@ -28,20 +28,26 @@ function SendLoginRequest(username,password)
 
 <h1>login page</h1>
 
+<body>
 <form action = "login.php" method = POST>
 <input type=hidden name="type" value="login">
 
 <body>
 
-<input type="text" name="username" id="username" placeholder="enter username">
+<input type= text name="username" id="username" placeholder="enter username">
 
-<input type="text" name="password" id="password" placeholder="Enter Password">
+<input type= text name="password" id="password" placeholder="Enter Password">
 
-<input type="submit" class ="btn btn-info" value="Submit">
+<input type= submit class ="btn btn-info" value="Submit">
+
+</form>
 
 <div id="textResponse">
 awaiting response
 </div>
+
+<p> <a href= "signup.html">Create Account</a> </p>
+
 <script>
 SendLoginRequest(document.getElementById("username").value, document.getElementById("password").value);
 </script>
