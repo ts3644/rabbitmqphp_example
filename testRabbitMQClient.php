@@ -33,7 +33,6 @@ $request = array();
 $request['type'] = "signup";
 $request['username'] = $username; #$_POST["$username"]; #$username; $_POST["username"];
 $request['password'] = $password; #$_POST["$password"]#$password; $_POST["password"];
-//$request['email'] = $email;
 $request['message'] = "Hey";
 $response = $client->send_request($request);
 //$response = $client->publish($request);

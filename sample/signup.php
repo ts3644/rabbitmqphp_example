@@ -1,5 +1,5 @@
 <?php
-/*
+
 #require('/home/talha/IT490/rabbitmqphp_example/testRabbitMQClient.php');
 //session_start();
 //$sidvalue = session_id();
@@ -37,14 +37,15 @@ switch ($request)
 {
         case "1":
 		$response = "Username Exists, Try Again";
-		//redirect("You will be redirected", "localhost", "5");
+		redirect("You will be redirected", "index.html", "5");
 
         break;
         case "0":
 		$response = "You Have Been Registered";
+		redirect("You Have Been Registered, You will be redirected", "homepage.html","3");
         break;
 }
 echo json_encode($response);
 exit(0);
- */
+ 
 ?>

@@ -6,7 +6,7 @@ private $logindb;
 
 public function __construct()
 {
-	$this->logindb = new mysqli("192.168.1.50","admin","admin","login");
+	$this->logindb = new mysqli("192.168.1.45","admin","admin","login");
 
 	if ($this->logindb->connect_errno != 0)
 	{
@@ -43,11 +43,11 @@ public function validateSignup($username,$password)
 	$statement = "select * from users where username  = '$un'";
 	$response = $this->logindb->query($statement);
 
-//	while ($row = $response->fetch_assoc())
-//	{
-		echo "check username for $username".PHP_EOL;
+/*	while ($row = $response->fetch_assoc())
+	{
+		echo "check username for $username".PHP_EOL;*/
 		$row = $response->fetch_assoc();
-		if ($row["username"] > 0)
+		if ($row["username"] == $un)
 		{
 			echo "username exists".PHP_EOL;
 			//echo "test1".PHP_EOL;
@@ -57,8 +57,8 @@ public function validateSignup($username,$password)
 			//echo "2".PHP_EOL;
 		}
 		else{
-			$s = "insert into users (username, password) values ('$username', '$password')";
-
+			$s = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+			$ss = "select * from users where username = '$un'";
 			$response = $this->logindb->query($s);
 			return 0;
 			exit();

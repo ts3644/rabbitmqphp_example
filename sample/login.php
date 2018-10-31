@@ -15,11 +15,11 @@ $password = $_POST['password'];
 
 #include('/home/talha/git/rabbitmqphp_example/testRabbitMQClient.php');
 
-/*function redirect($message, $url, $delay){
+function redirect($message, $url, $delay){
         echo($message);
         header("refresh:$delay; url=$url");
         exit();
-}*/
+}
 
 if (!isset($_POST))
 {
@@ -38,7 +38,7 @@ switch ($request)
 {
 	case "1":
 		$response = "login, yeah we can do that";
-		//redirect("You will be redirected", "homepage.html", "3");
+		redirect("Login Successful! You will be redirected", "homepage.html", "3");
 	break;
 	case "0":	
 		$response = "Wrong Username or Password, Try Again";
