@@ -5,12 +5,17 @@ require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 require_once('login.php.inc');
 
-function doLogin($username,$password)
+function doLogin($type,$username,$password)
 {
     // lookup username in databas
     // check password
-    $login = new loginDB();
-    return $login->validateLogin($username,$password);
+	$login = new loginDB();
+	if($type == "login"){
+		return $login->validateLogin($username,$password);
+	}
+	if($type == "signup"){
+		return $login->validateSignup($username,$password);
+	}
     //return false if not valid
 }
 
@@ -25,7 +30,9 @@ function requestProcessor($request)
   switch ($request['type'])
   {
     case "login":
-      return doLogin($request['username'],$request['password']);
+	    return doLogin($request['type'],$request['username'],$request['password']);
+    case "signup":
+	   return doLogin($request['type'], $request['username'],$request['password']);    
     case "validate_session":
       return doValidate($request['sessionId']);
   }
@@ -35,6 +42,9 @@ function requestProcessor($request)
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
 
 $server->process_requests('requestProcessor');
+
+echo "testRabbitMQServer END".PHP_EOL;
+
 exit();
 ?>
 
