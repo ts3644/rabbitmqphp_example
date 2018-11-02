@@ -1,4 +1,5 @@
 <?php
+session_start();
 //$httpApiUrl = "https://api.rescuegroups.org/http/v2.json";
 //function ListDeezNuts(){
 

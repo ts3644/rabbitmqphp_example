@@ -1,16 +1,7 @@
-<?php
-
-function gatekeeper()
-{
-        if(! isset($_SESSION['logged'])){
-                redirect("LOGIN CORRECTLY", "index.html", "3");
-        }
-}
-
+<?php 
 session_start();
-gatekeeper();
-echo "Logged value is: ". $_SESSION["logged"];
-echo "username is: " . $_SESSION["user_id"];
+echo "Welcome to animal rescue information " . $_SESSION["user_id"];
+if(isset($_SESSION["user_id"])){
 ?>
 <!DOCTYPE html>
 <html>
@@ -268,9 +259,7 @@ function show() {
 </script>
 
 </body>
-<?php 
- echo 'HeLlO wOrLd'; 
-?>
+
 <h1> HomePage </h1>
 <p> <a href = "logout.php" >Logout</a> </p>
 
@@ -309,4 +298,12 @@ function show() {
 <option value = "">Choose </option>
 <option value = "d">Dog </option>
 </body>
+<?php 
+}
+if(!isset($_SESSION["user_id"])){
+?>
+	<p> You need to login to use this page </p>
+	<?php header("Refresh:3; url=index.html");
+}
+?>
 </html>

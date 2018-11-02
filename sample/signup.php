@@ -42,7 +42,7 @@ switch ($request)
         break;
         case "0":
 		$response = "You Have Been Registered";
-		redirect("You Have Been Registered, You will be redirected", "homepage.html","3");
+		redirect("You Have Been Registered, You will be redirected", "index.html","3");
         break;
 }
 echo json_encode($response);

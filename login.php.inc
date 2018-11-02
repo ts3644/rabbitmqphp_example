@@ -6,7 +6,7 @@ private $logindb;
 
 public function __construct()
 {
-	$this->logindb = new mysqli("192.168.1.45","admin","admin","login");
+	$this->logindb = new mysqli("localhost","newuser","password","loginDB");
 
 	if ($this->logindb->connect_errno != 0)
 	{
@@ -20,7 +20,7 @@ public function validateLogin($username,$password)
 {
 	$un = $this->logindb->real_escape_string($username);
 	$pw = $this->logindb->real_escape_string($password);
-	$statement = "select * from users where username  = '$un'";
+	$statement = "select * from login where username  = '$un'";
 	$response = $this->logindb->query($statement);
 
 	while ($row = $response->fetch_assoc())
@@ -40,7 +40,7 @@ public function validateSignup($username,$password)
 {
 	$un = $this->logindb->real_escape_string($username);
         $pw = $this->logindb->real_escape_string($password);
-	$statement = "select * from users where username  = '$un'";
+	$statement = "select * from login where username  = '$un'";
 	$response = $this->logindb->query($statement);
 
 /*	while ($row = $response->fetch_assoc())
@@ -57,8 +57,8 @@ public function validateSignup($username,$password)
 			//echo "2".PHP_EOL;
 		}
 		else{
-			$s = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
-			$ss = "select * from users where username = '$un'";
+			$s = "INSERT INTO login (username, password) VALUES ('$username', '$password')";
+			$ss = "select * from login where username = '$un'";
 			$response = $this->logindb->query($s);
 			return 0;
 			exit();

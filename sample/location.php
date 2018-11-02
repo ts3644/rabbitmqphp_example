@@ -1,57 +1,63 @@
 <?php
-session_start();
 //$httpApiUrl = "https://api.rescuegroups.org/http/v2.json";
 //function ListDeezNuts(){
 
 $breed = $_POST['breed'];
-#echo "Hello";
-#`echo $_POST['breed'];
-#$breed = "Dog";
+$zipCode = $_POST['zipCode'];
+$distance = $_POST['distance'];
+
+#echo $breed;
+#echo $zipCode;
+#echo $distance;
+
 $data = array(
 	"apikey" => "txjamlL8",
-	"objectType" => "animalColors",
+	"objectType" => "animals",
 	"objectAction" => "publicSearch",
 	"search" => array(
 		//"calcFoundRows" => "Yes",
 		"resultStart" => "0",
 		"resultLimit" => "500",
-		//"resultSort" => "breedName",
-		"resultSort" => "colorName",
+		"resultSort" => "animalID",
+		//		"resultSort" => "colorName",
 		"resultOrder" => "asc",
-	//	"fields" => array("animalID","animalOrgID","animalName","animalSpecies","color"/*,"animalTumbnailUrl"*/),
+/*		//"fields" => array("animalID","animalOrgID","animalName","animalSpecies","animalTumbnailUrl"),
 		"filters" => array(
 			array(
 				"fieldName" => "colorSpecies",
 				"operation" => "equals",
-				"criteria" => $breed,
+				"criteria" => "Dog",
 			),
-			/*array(
-				"fieldName" => "species",
-				"operation" => "equal",
-				"criteria" => "Dog"
-
-			),*/
 		),
 		"filterProcessing"=> "1",
 		"fields"=> array("colorID","colorName","colorSpecies","colorSpeciesID"),
-		//"fields"=>array("breedID", "breedName", "breedSpecies", "breedSpeciesID"),
 	),
-);
-/*"filters" => array(
+);*/
+"filters" => array(
        	array(
 	"fieldName" => "animalStatus",
 	"operation" => "equal",
 	"criteria" => "Available"
 	),
 	array(
-		"fieldName" => "animalGeneralSizePotential",
+		"fieldName" => "animalLocationDistance",
+		"operation" => "radius",
+		"criteria" => $distance,
+	),
+	array(
+		"fieldName" => "animalLocation",
+		"operation" => "equals",
+		"criteria" => $zipCode,
+	),
+	array(
+		"fieldName" => "animalSpecies",
 		"operation" => "equal",
-		"criteria" => "Small",
+		"criteria" => $breed,
 	),
 ),
-	"fields" => array("animalSpecies"),
+	"fields" => array( "locationAddress", "locationCity","locationName","locationPhone", "locationPostalcode"),
 ),
-);*/
+);
 	
 
 $jsonData = json_encode($data);

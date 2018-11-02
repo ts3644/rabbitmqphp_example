@@ -1,6 +1,6 @@
 <?php
 
-//session_start();
+session_start();
 //$sidvalue = session_id();
 //echo "sess id: $sidvalue";
 
@@ -14,6 +14,13 @@ $password = $_POST['password'];
 //echo $_Session["username"]
 
 #include('/home/talha/git/rabbitmqphp_example/testRabbitMQClient.php');
+
+function gatekeeper()
+{
+	if(! isset($_SESSION['logged'])){
+		redirect("LOGIN CORRECTLY", "index.html", "3");
+	}
+}
 
 function redirect($message, $url, $delay){
         echo($message);
@@ -38,11 +45,13 @@ switch ($request)
 {
 	case "1":
 		$response = "login, yeah we can do that";
-		redirect("Login Successful! You will be redirected", "homepage.html", "3");
+		$_SESSION["logged"] = true;
+		$_SESSION["user_id"] = $username;
+		redirect("Login Successful! You will be redirected", "homepage.php", "3");
 	break;
 	case "0":	
 		$response = "Wrong Username or Password, Try Again";
-		//redirect("You will be redirected", "index.html", "3");
+		redirect("You will be redirected", "index.html", "3");
 
 	break;
 }
