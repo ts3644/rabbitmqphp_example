@@ -1,6 +1,15 @@
 <html>
 <meta charset="utf-8"/>	
 <meta name = "viewport" content = "width=device-width, initial-scale=1">
+<style>
+#field{background:white; width: 40%; height: -200px; margin: auto; border: 5px solid black; margin-top: 10%; box-shadow:10px 15px 20px;}
+#b{width: 200px; height: -10px; margin-top: 10px;}
+body{
+	background-color: teal;
+		background-image: url("paw2.jpg");
+			
+}
+</style>
 <script>
 
 function HandleLoginResponse(response)
@@ -26,19 +35,19 @@ function SendLoginRequest(username, password)
 	request.send("type=login&uname="+username+"&pword="+password);
 }
 </script>
-
-<h1>login page</h1>
+<fieldset id = "field">
+	<h1><center>Animal Adoption</center></h1>
 
 <form action = "login.php" method = POST>
 <input type=hidden name="type" value="login">
 
 <body>
+	<center>
+		<input type= text name="username" id="username" placeholder="Enter username" autocomplete = "off"><br>
 
-<input type= text name="username" id="username" placeholder="Enter username" autocomplete = "off">
+		<input type= text name="password" id="password" placeholder="Enter Password" autocomplete = "off"><br>
 
-<input type= text name="password" id="password" placeholder="Enter Password" autocomplete = "off">
-
-<input type= submit class ="btn btn-info" value="Submit">
+<input type= submit id="b" class ="btn btn-info" value="Submit">
 
 </form>
 
@@ -47,7 +56,8 @@ awaiting response
 </div>
 
 <p> <a href= "signup.html">Create Account</a> </p>
-
+	</center>
+</fieldset>
 <script>
 SendLoginRequest(document.getElementById("username").value, document.getElementById("password").value);
 </script>

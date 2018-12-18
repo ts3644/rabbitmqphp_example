@@ -1,17 +1,31 @@
 <?php 
-//session_start();
-//echo "Welcome to animal rescue information " . $_SESSION["user_id"];
-//if(isset($_SESSION["user_id"])){
+session_start();
+echo "Welcome to animal rescue information " . $_SESSION["user_id"];
+if(isset($_SESSION["user_id"])){
 ?>
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8"/>
 <body>
-<!--<style>
-table, tr, th, td {
-    border: 1px solid black;
+<style>
+#d{background-color: white;border: 5px solid black;}
+#div1{background-color: white;border: 5px solid black;}
+#div2{background-color: white;border: 5px solid black;}
+#div3{background-color: white;border: 5px solid black;}
+#status1{margin-top: 10px;}
+body{
+	background-color: teal;
 }
-</style>-->
+
+
+</style>
+</body>
+<style>
+table, tr, th, td{
+border: 1px solid black;
+}
+</style> 
+
 <script>
 function showHint(){
 	
@@ -105,7 +119,7 @@ function getLocation(breed, distance, zipCode){
 				//}
 			}
 			txt += "</table>"
-			document.getElementById("stats").innerHTML = txt;
+			document.getElementById("statss").innerHTML = txt;
 		}		
 	}
 	request.send("breed="+breed+"&distance="+distance+"&zipCode="+zipCode);
@@ -260,47 +274,56 @@ function show() {
 </script>
 
 </body>
-
-<h1> HomePage </h1>
+<div id="d">
+<h1><center> Animal Adoption HomePage</center> </h1>
 <p> <a href = "logout.php" >Logout</a> </p>
-
+</div>
 <body>
+	<center>
+	<div id="div1">
 	<p>Click below to see what type of animals are available!</p>
 	<!--	<p id="demo"></p>-->
 	<button onclick="showHint()">Click Me</button>
 	<p id="demo"></p>
 	<p></p>
+	</div>
+	<div id="div2">
 	<p>Enter the name of an animal from above to see detailed information</p>
 
-	<button onClick="show()">Switch Search Types</button>
+<!--	<button onClick="show()">Switch Search Types</button> -->
 	<!--<input id="breed" type = text name = "api" >-->
+	<br><center>
 
 	<input type= text name="breed" id="breed" placeholder="Enter breed">
-	<input id="loc" type=text name="location", id="location", placeholder="Enter location">
-	<input id="locz" type=text name="zipCode", id="zipCode", placeholder="Enter Zip Code">
+	<br></center>
+<!--	<input id="loc" type=text name="location", id="location", placeholder="Enter location">
+	<input id="locz" type=text name="zipCode", id="zipCode", placeholder="Enter Zip Code"> -->
 
-	<!--<button onClick="show()">Switch Search Types</button>-->
+<!--	<button onClick="show()">Switch Search Types</button> -->
 	
-	<button id="loczz" onclick="getLocation(document.getElementById('breed').value, document.getElementById('loc').value, document.getElementById('locz').value)">Location Info</button>
+<!--	<button id="loczz" onclick="getLocation(document.getElementById('breed').value, document.getElementById('loc').value, document.getElementById('locz').value)">Location Info</button> --> 
 	<button id="status" onclick="getBreed(document.getElementById('breed').value)">Breed Info</button>
 	<button id="status1" onclick="getColor(document.getElementById('breed').value)">Animal Colors</button>
 	<button id="status2" onclick="getPattern(document.getElementById('breed').value)">Animal Patterns</button>
 	<button id="status3" onclick="getInfo(document.getElementById('breed').value)">Animal Info</button>
 	
 	<p id="stats">
-	
+	</div>
+	<div id="div3">
+		<p> Enter the Radius and Zipcode to Find Animal Locations </p><br>
+	<input id="loc" type=text name="location", id="location", placeholder="Enter Radius">
+        <input id="locz" type=text name="zipCode", id="zipCode", placeholder="Enter Zip Code">
+<button id="loczz" onclick="getLocation(document.getElementById('breed').value, document.getElementById('loc').value, document.getElementById('locz').value)">Location Info</button> 
+	<p id = statss>
+	</div>
 	
 	<!--<script>
 	getBreed(document.getElementById("breed").value);
 	</script>-->
-<select name="Pet" id="pet">
 
-	
-<option value = "">Choose </option>
-<option value = "d">Dog </option>
 </body>
 <?php 
-//}
+}
 if(!isset($_SESSION["user_id"])){
 ?>
 	<p> You need to login to use this page </p>
