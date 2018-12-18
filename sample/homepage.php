@@ -1,7 +1,7 @@
 <?php 
-session_start();
-echo "Welcome to animal rescue information " . $_SESSION["user_id"];
-if(isset($_SESSION["user_id"])){
+//session_start();
+//echo "Welcome to animal rescue information " . $_SESSION["user_id"];
+//if(isset($_SESSION["user_id"])){
 ?>
 <!DOCTYPE html>
 <html>
@@ -95,12 +95,13 @@ function getLocation(breed, distance, zipCode){
 			obj = obj.substring(1,obj.length-1);
 			myObj = JSON.parse(obj);
 
-			txt += "<table> <tr> <th> Location Name </th> <th> Location Postal Code </th> <th> Phone Number </th> </tr>";
+			txt += "<table> <tr> <th> Location Name </th> <th> Location Postal Code </th> <th> Phone Number </th> <th> Email Address</th></tr>";
 			for(x in myObj.data){
 				//if(!arr.includes(myObj.data[x].breedName)){
 				//	arr.push(myObj.data[x].breedName)
-					txt += "<tr> <td>" + myObj.data[x].locationName + "</td>" +"<td>" + myObj.data[x].locationPostalcode + "</td>" + "<td>" + myObj.data[x].locationPhone + "</td> </tr>";
-			
+				if(myObj.data[x].locationName != "" && myObj.data[x].locationPhone != "" && myObj.data[x].locationPostalCode != "" && myObj.data[x].fosterEmail != ""){
+				txt += "<tr> <td>" + myObj.data[x].locationName + "</td>" +"<td>" + myObj.data[x].locationPostalcode + "</td>" + "<td>" + myObj.data[x].locationPhone + "</td>" + "<td>" + myObj.data[x].fosterEmail + "</td> </tr>";
+				}
 				//}
 			}
 			txt += "</table>"
@@ -299,7 +300,7 @@ function show() {
 <option value = "d">Dog </option>
 </body>
 <?php 
-}
+//}
 if(!isset($_SESSION["user_id"])){
 ?>
 	<p> You need to login to use this page </p>

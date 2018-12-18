@@ -2,9 +2,9 @@
 //$httpApiUrl = "https://api.rescuegroups.org/http/v2.json";
 //function ListDeezNuts(){
 
-$breed = $_POST['breed'];
-$zipCode = $_POST['zipCode'];
-$distance = $_POST['distance'];
+$breed = "Dog";//$_POST['breed'];
+$zipCode = "07013";//$_POST['zipCode'];
+$distance = "15";//$_POST['distance'];
 
 #echo $breed;
 #echo $zipCode;
@@ -55,7 +55,7 @@ $data = array(
 		"criteria" => $breed,
 	),
 ),
-	"fields" => array( "locationAddress", "locationCity","locationName","locationPhone", "locationPostalcode"),
+	"fields" => array( "locationAddress", "locationCity","locationName","locationPhone", "locationPostalcode", "fosterEmail"),
 ),
 );
 	
