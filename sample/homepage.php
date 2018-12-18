@@ -6,6 +6,7 @@ if(isset($_SESSION["user_id"])){
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8"/>
+<meta name="viewport" content = "width=device-width, initial-scale=1">
 <body>
 <style>
 #d{background-color: white;border: 5px solid black;}
